@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Cherry : MonoBehaviour
 {
-    public GameObject gameManager;
-
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            gameManager.GetComponent<CheckPoint>().AddAmmo();
-
+            other.gameObject.GetComponent<PlayerRespawn>().SaveCheckPoint(transform.position);
             Destroy(gameObject);
         }
     }
